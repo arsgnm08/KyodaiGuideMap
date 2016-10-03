@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="RestaurantAdditional" representedClassName=".RestaurantAdditional" syncable="YES">
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantBasic" inverseName="additionalData" inverseEntity="RestaurantBasic" syncable="YES"/>
+    </entity>
+    <entity name="RestaurantBasic" representedClassName=".RestaurantBasic">
+        <attribute name="area" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="closedDay" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hour" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="introduction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="menuFirst" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="menuSecond" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="menuThird" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="park" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reserve" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seats" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueFirst" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueSecond" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueThird" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="additionalData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantAdditional" inverseName="relationship" inverseEntity="RestaurantAdditional" syncable="YES"/>
+        <relationship name="businessHours" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantBusiness" inverseName="restaurant" inverseEntity="RestaurantBusiness" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantPhoto" inverseName="relationship" inverseEntity="RestaurantPhoto" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="RestaurantBusiness" representedClassName=".RestaurantBusiness" syncable="YES">
+        <attribute name="closed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="friday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="monday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="saturday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sunday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thursday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tuesday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wednesday" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantBasic" inverseName="businessHours" inverseEntity="RestaurantBasic" syncable="YES"/>
+    </entity>
+    <entity name="RestaurantPhoto" syncable="YES">
+        <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantBasic" inverseName="photo" inverseEntity="RestaurantBasic" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="RestaurantAdditional" positionX="261" positionY="198" width="128" height="58"/>
+        <element name="RestaurantBasic" positionX="261" positionY="189" width="128" height="405"/>
+        <element name="RestaurantBusiness" positionX="270" positionY="207" width="128" height="195"/>
+        <element name="RestaurantPhoto" positionX="558" positionY="285" width="128" height="75"/>
+    </elements>
+</model>
