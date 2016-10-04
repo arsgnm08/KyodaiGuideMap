@@ -20,6 +20,7 @@ class TabBarController: UITabBarController {
     //検索の絞り込み条件
     var criteria : Criteria = Criteria.getInstance()
     var changedCriteria = false
+    var fetchBatchSize = 20
     
     //MARK: Internal functions
     override func viewDidLoad() {
@@ -77,7 +78,7 @@ class TabBarController: UITabBarController {
         
         if entity != nil {
             fetchRequest.entity = entity
-            fetchRequest.fetchBatchSize = 20
+            fetchRequest.fetchBatchSize = fetchBatchSize
             fetchRequest.sortDescriptors = [sortDescriptor]
         }
         

@@ -1,6 +1,7 @@
 
 
 
+
 //
 //  MasterViewController.swift
 //  京大周辺マップiPhone
@@ -41,6 +42,10 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.attributedTitle = NSAttributedString(string: "更新")
+        self.refreshControl?.addTarget(self, action:  #selector(MasterViewController.fetchMoreData), for: UIControlEvents.valueChanged)
         
         let tabBarController = self.tabBarController as? TabBarController
         tabBarController?.changedCriteria = true
@@ -171,6 +176,16 @@ class MasterViewController: UITableViewController {
         self.activityIndicator.stopAnimating()
         UIApplication.shared.endIgnoringInteractionEvents()
     }
+    
+    @objc func fetchMoreData() {
+        let tabBarController = self.tabBarController as! TabBarController
+        tabBarController.fetchBatchSize += 10
+        tabBarController.changedCriteria = true
+        self.reloadFetchedData()
+        self.refreshControl?.endRefreshing()
+    }
+    
+    
 }
 
 //MARK: CLLocationManagerDelegate methods
