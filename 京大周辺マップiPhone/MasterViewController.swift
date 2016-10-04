@@ -1,5 +1,6 @@
 
 
+
 //
 //  MasterViewController.swift
 //  京大周辺マップiPhone
@@ -30,8 +31,7 @@ class MasterViewController: UITableViewController {
     
     var locationManager : CLLocationManager? = nil
     var appDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
-//    var latitude : CLLocationDegrees = 35.022487
-//    var longitude : CLLocationDegrees = 135.779858
+    var obtainedCurrentLocation : Bool = false
 
     //MARK: Internal Functions
     
@@ -56,7 +56,6 @@ class MasterViewController: UITableViewController {
             locationManager?.delegate = self
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
             locationManager?.distanceFilter = 50
-            locationManager?.requestLocation()
             locationManager?.startUpdatingLocation()
         }else {
             appDelegate.lon = 135.779858
@@ -128,12 +127,16 @@ class MasterViewController: UITableViewController {
         if let label = (self.tableView.cellForRow(at: indexPath) as? TableViewCell)?.viewWithTag(2) as? UILabel {
             let travelTimeInMinutes = Double(travelTimeInSeconds)!/60
             let labelText = (Double(Int(travelTimeInMinutes*10))/10).description
+            if indexPath.row == 2{
+            //NSLog("Store Name: \((self.fetchedResultsArray![indexPath.row] as! RestaurantBasic).name)")
+            NSLog("Current Location is \(appDelegate.lat), \(appDelegate.lon)")
             NSLog("Time is \(labelText)")
+            }
             label.text = labelText
             
             let labelBike = (self.tableView.cellForRow(at: indexPath) as? TableViewCell)?.viewWithTag(4) as? UILabel
             labelBike!.text = (Double(Int(travelTimeInMinutes*10/3))/10).description
-            NSLog("Time is \(labelBike!.text)")
+            //NSLog("Time is \(labelBike!.text)")
         }
         
         if countForIndicator == (self.fetchedResultsArray!.count) {
@@ -178,8 +181,12 @@ extension MasterViewController : CLLocationManagerDelegate {
     @objc(locationManager:didUpdateLocations:)
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        appDelegate.lon = locations[locations.count-1].coordinate.longitude
-        appDelegate.lat = locations[locations.count-1].coordinate.latitude
+        appDelegate.lon = manager.location!.coordinate.longitude
+        appDelegate.lat = manager.location!.coordinate.latitude
+        
+        NSLog("currentlocation is \(appDelegate.lon), \(appDelegate.lat)")
+        
+        obtainedCurrentLocation = true
         
         self.tableView.reloadData()
     }
@@ -224,35 +231,39 @@ extension MasterViewController : TableViewCellDelegate {
     //所用時間を計算
     func calculateTime(_ coordinate : (longitude : Double, latitude : Double), indexPath : IndexPath){
         
-        let currentLocation = CLLocationCoordinate2DMake(appDelegate.lat, appDelegate.lon)
-        let destinationLocation = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude)
+        if obtainedCurrentLocation {
+            let currentLocation = CLLocationCoordinate2DMake(appDelegate.lat, appDelegate.lon)
+            let destinationLocation = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude)
 
-        let source : MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: currentLocation, addressDictionary: nil))
-        let destination : MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: destinationLocation, addressDictionary: nil))
-        
-        let request : MKDirectionsRequest = MKDirectionsRequest()
-        request.source = source
-        request.destination = destination
-        request.requestsAlternateRoutes = false
-        request.transportType = MKDirectionsTransportType.walking
-        
-        //NSLog(request.description)
-        
-        var expectedTime : String? = ""
-        let direction = MKDirections(request: request)
-        
-        direction.calculateETA(completionHandler: {
-            (response, error) in
+            let source : MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: currentLocation, addressDictionary: nil))
+            let destination : MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: destinationLocation, addressDictionary: nil))
             
-            if error == nil {
-                expectedTime = response?.expectedTravelTime.description
-                NSLog(expectedTime!)
-                self.changeTimeLabel(expectedTime!, indexPath: indexPath)
-                
-            }else {
-                NSLog((error?.localizedDescription)!)
-            }
-        })
+            let request : MKDirectionsRequest = MKDirectionsRequest()
+            request.source = source
+            request.destination = destination
+            request.requestsAlternateRoutes = false
+            request.transportType = MKDirectionsTransportType.walking
+        
+            var expectedTime : String? = ""
+            let direction = MKDirections(request: request)
+        
+            direction.calculateETA(completionHandler: {
+                (response, error) in
+            
+                if error == nil {
+                    expectedTime = response?.expectedTravelTime.description
+                    if indexPath.row == 2{
+                        NSLog("Store Name: \((self.fetchedResultsArray![indexPath.row] as! RestaurantBasic).name)")
+                        NSLog(request.description)
+                    }
+                    NSLog(expectedTime!)
+                    self.changeTimeLabel(expectedTime!, indexPath: indexPath)
+                    
+                }else {
+                    NSLog((error?.localizedDescription)!)
+                }
+            })
+        }
     }
 }
 
