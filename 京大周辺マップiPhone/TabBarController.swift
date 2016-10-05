@@ -66,7 +66,7 @@ class TabBarController: UITabBarController {
         let navigationController = viewControllers![0] as! UINavigationController
         navigationController.popToRootViewController(animated: true)
         self.changedCriteria = true
-        navigationController.topViewController!.viewDidLoad()
+        (navigationController.topViewController as? MasterViewController)?.reloadFetchedData()
     }
     
     //MARK: Fetch Request に関するメソッド

@@ -144,17 +144,21 @@ class MasterViewController: UITableViewController {
             //NSLog("Time is \(labelBike!.text)")
         }
         
+        NSLog("current array count is \(self.fetchedResultsArray!.count)")
         if countForIndicator == (self.fetchedResultsArray!.count) {
             hideIndicator()
             countForIndicator = 0
+            NSLog("Finish Indicator!")
         }else {
             countForIndicator += 1
+            NSLog("current countForIndicator is \(countForIndicator)")
         }
     }
     
     var countForIndicator : Int = 0
     
     func showIndicator() {
+        countForIndicator = 0
         self.activityIndicator = UIActivityIndicatorView()
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
         
@@ -198,9 +202,6 @@ extension MasterViewController : CLLocationManagerDelegate {
         
         appDelegate.lon = manager.location!.coordinate.longitude
         appDelegate.lat = manager.location!.coordinate.latitude
-        
-        NSLog("currentlocation is \(appDelegate.lon), \(appDelegate.lat)")
-        
         obtainedCurrentLocation = true
         
         self.tableView.reloadData()
@@ -235,6 +236,7 @@ extension MasterViewController : ResultViewController {
     //データの再読み込み
     func reloadFetchedData() {
         fetchedResultsArray = fetchedResultsController.fetchedObjects as NSArray?
+        countForIndicator = 0
         self.tableView.reloadData()
     }
 }
@@ -258,6 +260,8 @@ extension MasterViewController : TableViewCellDelegate {
             request.destination = destination
             request.requestsAlternateRoutes = false
             request.transportType = MKDirectionsTransportType.walking
+            
+            //NSLog(request.description)
         
             var expectedTime : String? = ""
             let direction = MKDirections(request: request)
@@ -267,10 +271,6 @@ extension MasterViewController : TableViewCellDelegate {
             
                 if error == nil {
                     expectedTime = response?.expectedTravelTime.description
-                    if indexPath.row == 2{
-                        NSLog("Store Name: \((self.fetchedResultsArray![indexPath.row] as! RestaurantBasic).name)")
-                        NSLog(request.description)
-                    }
                     NSLog(expectedTime!)
                     self.changeTimeLabel(expectedTime!, indexPath: indexPath)
                     
