@@ -96,8 +96,13 @@ class PopoverCriteriaViewController: UIViewController {
     
     func configureButtons() {
         
+        
+        //ソートに使用する配列
+        let arrayForSort = ["北山", "松ヶ崎", "一乗寺", "北大路", "下鴨", "高野", "北白川", "同志社周辺", "出町柳", "御蔭", "百万遍", "銀閣寺道", "丸太町", "神宮丸太町", "吉田", "浄土寺", "烏丸御池", "三条京阪", "岡崎", "蹴上", "四条烏丸", "四条河原町", "祇園"]
+        
         var buttonTag = 1
-        for (key, value) in area {
+        for i in 0...12 {
+            let (key, value) = (arrayForSort[i], area[arrayForSort[i]])
             if buttonTag > 12 {break}
             if let button = self.view.viewWithTag(buttonTag) as? UIButton{
                 button.setTitle(key, for: UIControlState())
