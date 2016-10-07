@@ -20,7 +20,7 @@ class TabBarController: UITabBarController {
     //検索の絞り込み条件
     var criteria : Criteria = Criteria.getInstance()
     var changedCriteria = false
-    var fetchBatchSize = 20
+    var fetchLimit = 10
     
     //MARK: Internal functions
     override func viewDidLoad() {
@@ -78,7 +78,7 @@ class TabBarController: UITabBarController {
         
         if entity != nil {
             fetchRequest.entity = entity
-            fetchRequest.fetchBatchSize = fetchBatchSize
+            fetchRequest.fetchLimit = fetchLimit
             fetchRequest.sortDescriptors = [sortDescriptor]
         }
         
@@ -165,7 +165,6 @@ class TabBarController: UITabBarController {
         
         self.fetchRequest?.predicate = predicate
         
-        
     }
     
     //MARK: データ初期化に関するメソッド
@@ -194,6 +193,7 @@ class TabBarController: UITabBarController {
             let newDataBusiness  = RestaurantBusiness(entity: entityRestaurantBusiness, insertInto: tempManagedObjectContext)
             
             let basicDict = dicts["Basic"]
+            NSLog(dicts.description)
             for (key, value) in basicDict! {
                 newDataBasic.setValue(value, forKey: key)
             }
@@ -299,14 +299,17 @@ extension TabBarController : NSFetchedResultsControllerDelegate {
             
             if entity != nil {
                 tempFetchRequest.entity = entity
-                tempFetchRequest.fetchBatchSize = 20
+                tempFetchRequest.fetchLimit = fetchLimit
                 tempFetchRequest.sortDescriptors = [sortDescriptor]
             }
             
             fetchRequest = tempFetchRequest
         }
         
+        fetchRequest = prepareFetchRequest(managedObjectContext!)
         if changedCriteria == true { configureFetchRequest() }
+        
+        NSLog(fetchRequest.debugDescription)
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".

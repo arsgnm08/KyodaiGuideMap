@@ -26,6 +26,7 @@ class MasterViewController: UITableViewController {
     var fetchedResultsArray : NSArray? = nil
     var searchBar: UISearchBar = UISearchBar()
     var criteria : Criteria! = nil
+    var tableDataSize = 10
     
     private var activityIndicator : UIActivityIndicatorView!
     let viewController : PopoverCriteriaViewController = PopoverCriteriaViewController(nibName: "PopoverCriteriaViewController", bundle: nil)
@@ -34,6 +35,9 @@ class MasterViewController: UITableViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
     var obtainedCurrentLocation : Bool = false
 
+    //For Debug
+    var countOfRequests = 0
+    
     //MARK: Internal Functions
     
     override func awakeFromNib() {
@@ -103,7 +107,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.fetchedResultsArray?.count)!
+        return fetchedResultsArray!.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -144,8 +148,8 @@ class MasterViewController: UITableViewController {
             //NSLog("Time is \(labelBike!.text)")
         }
         
-        NSLog("current array count is \(self.fetchedResultsArray!.count)")
-        if countForIndicator == (self.fetchedResultsArray!.count) {
+        NSLog("current array count is \(tableDataSize)")
+        if countForIndicator == (tableDataSize) {
             hideIndicator()
             countForIndicator = 0
             NSLog("Finish Indicator!")
@@ -183,7 +187,8 @@ class MasterViewController: UITableViewController {
     
     @objc func fetchMoreData() {
         let tabBarController = self.tabBarController as! TabBarController
-        tabBarController.fetchBatchSize += 10
+        tableDataSize += 10
+        tabBarController.fetchLimit = tableDataSize
         tabBarController.changedCriteria = true
         self.reloadFetchedData()
         self.refreshControl?.endRefreshing()
@@ -238,6 +243,9 @@ extension MasterViewController : ResultViewController {
         fetchedResultsArray = fetchedResultsController.fetchedObjects as NSArray?
         countForIndicator = 0
         self.tableView.reloadData()
+        NSLog(((self.tabBarController as? TabBarController)?.fetchLimit.description)!)
+        NSLog(fetchedResultsArray!.count.description)
+        NSLog(tableView.numberOfRows(inSection: 0).description)
     }
 }
 
@@ -261,7 +269,9 @@ extension MasterViewController : TableViewCellDelegate {
             request.requestsAlternateRoutes = false
             request.transportType = MKDirectionsTransportType.walking
             
-            //NSLog(request.description)
+            NSLog(request.description)
+            countOfRequests += 1
+            NSLog("count of requests is \(tableDataSize)")
         
             var expectedTime : String? = ""
             let direction = MKDirections(request: request)

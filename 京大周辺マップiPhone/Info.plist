@@ -12,6 +12,8 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>現在位置を地図に表示するために利用します。</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>現在位置を地図に表示するために利用します。</string>
 	<key>CFBundlePackageType</key>

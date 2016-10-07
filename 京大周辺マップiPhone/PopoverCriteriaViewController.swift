@@ -10,6 +10,7 @@ import UIKit
 
 class PopoverCriteriaViewController: UIViewController {
     
+    
     @IBAction func buttonTapped(_ sender:AnyObject) {
         criteria.genreCriteria = genre
         criteria.areaCriteria = area
@@ -39,9 +40,10 @@ class PopoverCriteriaViewController: UIViewController {
         var targetCriteria : [String : Bool]! = nil
         if let button = sender as? UIButton {
             switch button.tag {
-            case 1...12 : targetCriteria = area
-            case 13...25 : targetCriteria = genre
+            case 1...23 : targetCriteria = area  //変更
+            case 25...40 : targetCriteria = genre  //変更
             default : return
+                
             }
             //targetCriteria[(button.titleLabel?.text)!] = !(targetCriteria[(button.titleLabel?.text)!]!)
             
@@ -59,8 +61,8 @@ class PopoverCriteriaViewController: UIViewController {
             button.setTitleColor(currentBackgroundcolor, for: UIControlState())
             
             switch button.tag {
-            case 1...12 : area = targetCriteria
-            case 13...25 : genre = targetCriteria
+            case 1...24 : area = targetCriteria
+            case 25...42 : genre = targetCriteria
             default : return
             }
         }
@@ -96,14 +98,13 @@ class PopoverCriteriaViewController: UIViewController {
     
     func configureButtons() {
         
-        
         //ソートに使用する配列
-        let arrayForSort = ["北山", "松ヶ崎", "一乗寺", "北大路", "下鴨", "高野", "北白川", "同志社周辺", "出町柳", "御蔭", "百万遍", "銀閣寺道", "丸太町", "神宮丸太町", "吉田", "浄土寺", "烏丸御池", "三条京阪", "岡崎", "蹴上", "四条烏丸", "四条河原町", "祇園"]
+        let arrayForAreaSort = ["北山", "松ヶ崎", "一乗寺", "北大路", "下鴨", "高野", "北白川", "同志社周辺", "出町柳", "御蔭", "百万遍", "銀閣寺道", "丸太町", "神宮丸太町", "吉田", "浄土寺", "烏丸御池", "三条京阪", "岡崎", "蹴上", "四条烏丸", "四条河原町", "祇園"]
         
         var buttonTag = 1
-        for i in 0...12 {
-            let (key, value) = (arrayForSort[i], area[arrayForSort[i]])
-            if buttonTag > 12 {break}
+        for i in 0...22 {
+            let (key, value) = (arrayForAreaSort[i], area[arrayForAreaSort[i]])
+            if buttonTag > 24 {break}
             if let button = self.view.viewWithTag(buttonTag) as? UIButton{
                 button.setTitle(key, for: UIControlState())
                 buttonTag += 1
@@ -118,11 +119,14 @@ class PopoverCriteriaViewController: UIViewController {
                 }
             }
         }
-        while buttonTag < 13 { self.view.viewWithTag(buttonTag)?.removeFromSuperview() ; buttonTag += 1 }
+        while buttonTag < 24 { self.view.viewWithTag(buttonTag)?.removeFromSuperview() ; buttonTag += 1 }
         
-        buttonTag = 13
-        for (key, value) in genre {
-            if buttonTag > 25 {break}
+        let arrayForGenreSort = ["和食", "洋食", "中華", "麺類", "ラーメン・つけ麺", "多国籍", "カレー", "ファストフード", "丼物", "粉物", "焼肉", "焼き鳥", "パン", "カフェ", "スイーツ", "宴会"]
+        
+        buttonTag = 25
+        for i in 0...15  {
+            let (key, value) = (arrayForGenreSort[i], genre[arrayForGenreSort[i]])
+            if buttonTag < 25 {break}
             if let button = self.view.viewWithTag(buttonTag) as? UIButton{
                 button.setTitle(key, for: UIControlState())
                 buttonTag += 1
@@ -137,7 +141,9 @@ class PopoverCriteriaViewController: UIViewController {
                 }
             }
         }
-        while buttonTag < 25 { self.view.viewWithTag(buttonTag)?.removeFromSuperview() ; buttonTag += 1 }
+        
+        while buttonTag < 41
+        { self.view.viewWithTag(buttonTag)?.removeFromSuperview() ; buttonTag += 1 }
         
         buttonTag = 97
         if let button = self.view.viewWithTag(buttonTag) as? UIButton {
