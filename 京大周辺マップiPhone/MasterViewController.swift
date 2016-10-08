@@ -149,7 +149,7 @@ class MasterViewController: UITableViewController {
         }
         
         NSLog("current array count is \(tableDataSize)")
-        if countForIndicator == (tableDataSize) {
+        if countForIndicator == tableDataSize {
             hideIndicator()
             countForIndicator = 0
             NSLog("Finish Indicator!")
@@ -186,15 +186,16 @@ class MasterViewController: UITableViewController {
     }
     
     @objc func fetchMoreData() {
+        
         let tabBarController = self.tabBarController as! TabBarController
         tableDataSize += 10
         tabBarController.fetchLimit = tableDataSize
         tabBarController.changedCriteria = true
         self.reloadFetchedData()
         self.refreshControl?.endRefreshing()
+
     }
-    
-    
+
 }
 
 //MARK: CLLocationManagerDelegate methods
@@ -276,18 +277,22 @@ extension MasterViewController : TableViewCellDelegate {
             var expectedTime : String? = ""
             let direction = MKDirections(request: request)
         
-            direction.calculateETA(completionHandler: {
-                (response, error) in
+            let queue = DispatchQueue(label: "myQueue")
+            queue.sync {
             
-                if error == nil {
-                    expectedTime = response?.expectedTravelTime.description
-                    NSLog(expectedTime!)
-                    self.changeTimeLabel(expectedTime!, indexPath: indexPath)
+                direction.calculateETA(completionHandler: {
+                    (response, error) in
+            
+                    if error == nil {
+                        expectedTime = response?.expectedTravelTime.description
+                        NSLog(expectedTime!)
+                        self.changeTimeLabel(expectedTime!, indexPath: indexPath)
                     
-                }else {
-                    NSLog((error?.localizedDescription)!)
-                }
-            })
+                    }else {
+                        NSLog((error?.localizedDescription)!)
+                    }
+                })
+            }
         }
     }
 }

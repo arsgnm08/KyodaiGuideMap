@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321">
+            startingLineNumber = "326"
+            endingLineNumber = "326">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -296,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320">
+            startingLineNumber = "325"
+            endingLineNumber = "325">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -310,11 +310,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324">
+            startingLineNumber = "329"
+            endingLineNumber = "329">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323">
+            startingLineNumber = "328"
+            endingLineNumber = "328">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -402,11 +402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339">
+            startingLineNumber = "344"
+            endingLineNumber = "344">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -448,63 +448,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "333"
@@ -518,11 +462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316">
+            startingLineNumber = "336"
+            endingLineNumber = "336">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -532,11 +476,67 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317">
+            startingLineNumber = "299"
+            endingLineNumber = "299">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
+            timestampString = "497624794.289856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "302"
+            endingLineNumber = "302">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
+            timestampString = "497624794.289856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "338"
+            endingLineNumber = "338">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
+            timestampString = "497624794.289856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "321"
+            endingLineNumber = "321">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
+            timestampString = "497624794.289856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "322"
+            endingLineNumber = "322">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1098,23 +1098,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497534686.544527"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497534686.544527"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "209"
@@ -1130,11 +1114,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
+            timestampString = "497624794.289856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "calculateTime(_:indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1146,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "calculateTime(_:indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1242,11 +1242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497534686.544527"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "locationManager(_:didFailWithError:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1258,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497534686.544527"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1274,11 +1274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497534686.544527"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "fetchMoreData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1366,15 +1366,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497534686.544527"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "fetchMoreData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1386,11 +1386,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
-            timestampString = "497535332.454582"
+            timestampString = "497624794.289856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "reloadFetchedData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1409,6 +1409,22 @@
             endingLineNumber = "313"
             landmarkName = "TabBarController"
             landmarkType = "4">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/MasterViewController.swift"
+            timestampString = "497594761.595886"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "changeTimeLabel(_:indexPath:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
