@@ -71,7 +71,8 @@ class DetailViewController: UIViewController {
     func Photo() {
         theView.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.size.height)!, width: UIScreen.main.bounds.size.width, height: (3 * UIScreen.main.bounds.size.width) / 4)
         theView.backgroundColor = UIColor.black
-        //theView.image =
+        let restaurantPhoto = restaurantBasicInfo?.photo as? RestaurantPhoto
+        theView.image = restaurantPhoto?.photoData
         self.view.addSubview(theView)
         
     }

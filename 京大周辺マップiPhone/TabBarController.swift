@@ -187,10 +187,14 @@ class TabBarController: UITabBarController {
             let entityRestaurantBusiness : NSEntityDescription! = NSEntityDescription.entity(
                 forEntityName: "RestaurantBusiness", in: tempManagedObjectContext
             )
+            let entityRestaurantPhoto : NSEntityDescription! = NSEntityDescription.entity(
+                forEntityName: "RestaurantPhoto", in: tempManagedObjectContext
+            )
             
             let newDataBasic  = RestaurantBasic(entity: entityRestaurantBasic, insertInto: tempManagedObjectContext)
             let newDataAdditional  = RestaurantAdditional(entity: entityRestaurantAdditional, insertInto: tempManagedObjectContext)
             let newDataBusiness  = RestaurantBusiness(entity: entityRestaurantBusiness, insertInto: tempManagedObjectContext)
+            let newDataPhoto  = RestaurantPhoto(entity: entityRestaurantPhoto, insertInto: tempManagedObjectContext)
             
             let basicDict = dicts["Basic"]
             NSLog(dicts.description)
@@ -203,6 +207,7 @@ class TabBarController: UITabBarController {
             
             newDataBasic.setValue(newDataAdditional, forKey: "additionalData")
             newDataBasic.setValue(newDataBusiness, forKey: "businessHours")
+            newDataBasic.setValue(newDataPhoto, forKey: "photo")
             
             /** additionalを使う際には実行
             let additionalDict = dicts["Additional"]
@@ -215,6 +220,16 @@ class TabBarController: UITabBarController {
             for (key, value) in businessDict! {
                 newDataBusiness.setValue(value, forKey: key)
             }
+            
+            let photoURL = Bundle.main.path(forResource: "Photo", ofType: "bundle")
+            let bundle = Bundle(path: photoURL!)
+            var photoData : Data? = nil
+            
+            if let photoPath = bundle?.path(forResource:"1-1", ofType:"jpeg") {
+                let handle = FileHandle(forReadingAtPath: photoPath)
+                photoData = handle!.readDataToEndOfFile()
+            }
+            newDataPhoto.setValue(photoData, forKey: "photo")
             
             do {
                 try tempManagedObjectContext.save()

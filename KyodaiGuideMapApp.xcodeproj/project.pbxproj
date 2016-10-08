@@ -26,6 +26,12 @@
 		E16B6DA81D787869005A80A4 /* MyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B6DA71D787869005A80A4 /* MyAnnotation.swift */; };
 		E18F48E71D9952AD00ADC7BD /* RestaurantBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F48E51D9952AD00ADC7BD /* RestaurantBasic.swift */; };
 		E18F48E81D9952AD00ADC7BD /* RestaurantBasic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F48E61D9952AD00ADC7BD /* RestaurantBasic+CoreDataProperties.swift */; };
+		E1AE1A921DA92A09009F5F3C /* RestaurantPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE1A901DA92A09009F5F3C /* RestaurantPhoto+CoreDataClass.swift */; };
+		E1AE1A931DA92A09009F5F3C /* RestaurantPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE1A901DA92A09009F5F3C /* RestaurantPhoto+CoreDataClass.swift */; };
+		E1AE1A941DA92A09009F5F3C /* RestaurantPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE1A911DA92A09009F5F3C /* RestaurantPhoto+CoreDataProperties.swift */; };
+		E1AE1A951DA92A09009F5F3C /* RestaurantPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE1A911DA92A09009F5F3C /* RestaurantPhoto+CoreDataProperties.swift */; };
+		E1AE1A971DA93256009F5F3C /* Photo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E1AE1A961DA93256009F5F3C /* Photo.bundle */; };
+		E1AE1A981DA93256009F5F3C /* Photo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E1AE1A961DA93256009F5F3C /* Photo.bundle */; };
 		E1D4FCC81D6B47C300C32EEE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4FCC71D6B47C300C32EEE /* TabBarController.swift */; };
 		E1FDD8C01D4F5A0E009C370A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FDD8BF1D4F5A0E009C370A /* AppDelegate.swift */; };
 		E1FDD8C31D4F5A0E009C370A /* ________iPhone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1FDD8C11D4F5A0E009C370A /* ________iPhone.xcdatamodeld */; };
@@ -67,6 +73,9 @@
 		E18F48D21D99523600ADC7BD /* KyodaiGuideMapApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KyodaiGuideMapApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		E18F48E51D9952AD00ADC7BD /* RestaurantBasic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantBasic.swift; sourceTree = "<group>"; };
 		E18F48E61D9952AD00ADC7BD /* RestaurantBasic+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestaurantBasic+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E1AE1A901DA92A09009F5F3C /* RestaurantPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RestaurantPhoto+CoreDataClass.swift"; path = "../RestaurantPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E1AE1A911DA92A09009F5F3C /* RestaurantPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RestaurantPhoto+CoreDataProperties.swift"; path = "../RestaurantPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E1AE1A961DA93256009F5F3C /* Photo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Photo.bundle; sourceTree = "<group>"; };
 		E1D4FCC71D6B47C300C32EEE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E1FDD8BA1D4F5A0E009C370A /* KyodaiGuideMapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KyodaiGuideMapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FDD8BE1D4F5A0E009C370A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +113,8 @@
 		E16B6D9E1D71DAFC005A80A4 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				E1AE1A911DA92A09009F5F3C /* RestaurantPhoto+CoreDataProperties.swift */,
+				E1AE1A901DA92A09009F5F3C /* RestaurantPhoto+CoreDataClass.swift */,
 				E16B6D921D71DAEB005A80A4 /* RestaurantBusiness+CoreDataProperties.swift */,
 				E18F48E51D9952AD00ADC7BD /* RestaurantBasic.swift */,
 				E18F48E61D9952AD00ADC7BD /* RestaurantBasic+CoreDataProperties.swift */,
@@ -140,6 +151,7 @@
 			children = (
 				E16B6D9E1D71DAFC005A80A4 /* ManagedObjects */,
 				E1D4FCC71D6B47C300C32EEE /* TabBarController.swift */,
+				E1AE1A961DA93256009F5F3C /* Photo.bundle */,
 				E164EDBC1D93CFB900658CC9 /* Protocols.swift */,
 				E164EDBA1D93B2F000658CC9 /* FilteringNavigationController.swift */,
 				E1FDD8BF1D4F5A0E009C370A /* AppDelegate.swift */,
@@ -272,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AE1A971DA93256009F5F3C /* Photo.bundle in Resources */,
 				E1FDD8CA1D4F5A0E009C370A /* Main.storyboard in Resources */,
 				E16B6D891D6DE822005A80A4 /* PopoverCriteriaViewController.xib in Resources */,
 				E16B6D911D71D8D4005A80A4 /* MasterData.plist in Resources */,
@@ -284,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AE1A981DA93256009F5F3C /* Photo.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +312,7 @@
 				E16B6D991D71DAEB005A80A4 /* RestaurantBusiness.swift in Sources */,
 				E16B6DA81D787869005A80A4 /* MyAnnotation.swift in Sources */,
 				E18F48E81D9952AD00ADC7BD /* RestaurantBasic+CoreDataProperties.swift in Sources */,
+				E1AE1A941DA92A09009F5F3C /* RestaurantPhoto+CoreDataProperties.swift in Sources */,
 				E1FDD8C31D4F5A0E009C370A /* ________iPhone.xcdatamodeld in Sources */,
 				E16B6DA01D72AC98005A80A4 /* TableViewCell.swift in Sources */,
 				E129BB141DA140C8002A2BC1 /* DetailViewController.swift in Sources */,
@@ -307,6 +322,7 @@
 				E1FDD8C51D4F5A0E009C370A /* MasterViewController.swift in Sources */,
 				E164EDBD1D93CFB900658CC9 /* Protocols.swift in Sources */,
 				E16B6D8F1D70A215005A80A4 /* Criteria.swift in Sources */,
+				E1AE1A921DA92A09009F5F3C /* RestaurantPhoto+CoreDataClass.swift in Sources */,
 				E164EDBB1D93B2F000658CC9 /* FilteringNavigationController.swift in Sources */,
 				E16B6D9A1D71DAEB005A80A4 /* RestaurantAdditional+CoreDataProperties.swift in Sources */,
 				E16B6D9B1D71DAEB005A80A4 /* RestaurantAdditional.swift in Sources */,
@@ -321,6 +337,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FDD8DB1D4F5A0E009C370A /* ________iPhoneTests.swift in Sources */,
+				E1AE1A951DA92A09009F5F3C /* RestaurantPhoto+CoreDataProperties.swift in Sources */,
+				E1AE1A931DA92A09009F5F3C /* RestaurantPhoto+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

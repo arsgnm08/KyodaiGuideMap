@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Xcode 7.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="RestaurantAdditional" representedClassName=".RestaurantAdditional" syncable="YES">
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantBasic" inverseName="additionalData" inverseEntity="RestaurantBasic" syncable="YES"/>
     </entity>
@@ -44,8 +44,8 @@
         <attribute name="wednesday" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantBasic" inverseName="businessHours" inverseEntity="RestaurantBasic" syncable="YES"/>
     </entity>
-    <entity name="RestaurantPhoto" syncable="YES">
-        <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
+    <entity name="RestaurantPhoto" representedClassName="RestaurantPhoto" syncable="YES">
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantBasic" inverseName="photo" inverseEntity="RestaurantBasic" syncable="YES"/>
     </entity>
     <elements>
