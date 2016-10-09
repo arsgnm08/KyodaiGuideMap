@@ -225,11 +225,17 @@ class TabBarController: UITabBarController {
             let bundle = Bundle(path: photoURL!)
             var photoData : Data? = nil
             
-            if let photoPath = bundle?.path(forResource:"1-1", ofType:"jpeg") {
-                let handle = FileHandle(forReadingAtPath: photoPath)
-                photoData = handle!.readDataToEndOfFile()
+            let indexOfData = basicDict?["number"]
+            for i in 0...1 {
+            
+                let name = (indexOfData?.description)! + "-" + i.description
+                if let photoPath = bundle?.path(forResource:name, ofType:"jpeg") {
+                    let handle = FileHandle(forReadingAtPath: photoPath)
+                    photoData = handle!.readDataToEndOfFile()
+                    newDataPhoto.setValue(photoData, forKey: "photo")
+                }
+                
             }
-            newDataPhoto.setValue(photoData, forKey: "photo")
             
             do {
                 try tempManagedObjectContext.save()

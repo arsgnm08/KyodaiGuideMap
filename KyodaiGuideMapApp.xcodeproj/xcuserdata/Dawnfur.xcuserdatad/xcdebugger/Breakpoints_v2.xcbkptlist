@@ -1402,11 +1402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/TabBarController.swift"
-            timestampString = "497628927.092986"
+            timestampString = "497669063.362426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "TabBarController"
             landmarkType = "4">
          </BreakpointContent>
@@ -1424,6 +1424,54 @@
             startingLineNumber = "152"
             endingLineNumber = "152"
             landmarkName = "changeTimeLabel(_:indexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/TabBarController.swift"
+            timestampString = "497629863.076677"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "setMasterData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/AppDelegate.swift"
+            timestampString = "497629846.944253"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "persistentStoreCoordinator"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4eac;&#x5927;&#x5468;&#x8fba;&#x30de;&#x30c3;&#x30d5;&#x309a;iPhone/TabBarController.swift"
+            timestampString = "497669032.542339"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "setMasterData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
