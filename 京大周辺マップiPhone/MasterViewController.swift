@@ -23,7 +23,7 @@ class MasterViewController: UITableViewController {
         let tabBarController = self.tabBarController as? TabBarController
         return (tabBarController?.fetchedResultsController)!
     }
-    var fetchedResultsArray : NSArray? = nil
+    var fetchedResultsArray : [RestaurantBasic]? = nil
     var searchBar: UISearchBar = UISearchBar()
     var criteria : Criteria! = nil
     var tableDataSize = 10
@@ -32,9 +32,15 @@ class MasterViewController: UITableViewController {
     let viewController : PopoverCriteriaViewController = PopoverCriteriaViewController(nibName: "PopoverCriteriaViewController", bundle: nil)
     
     var locationManager : CLLocationManager? = nil
-    var appDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
     var obtainedCurrentLocation : Bool = false
-
+    
+    
+    var userLocation : CLLocationCoordinate2D? = nil {
+        didSet {
+            (self.tabBarController as? TabBarController)?.userLocation = userLocation
+        }
+    }
+    
     //For Debug
     var countOfRequests = 0
     
@@ -53,7 +59,7 @@ class MasterViewController: UITableViewController {
         
         let tabBarController = self.tabBarController as? TabBarController
         tabBarController?.changedCriteria = true
-        fetchedResultsArray = fetchedResultsController.fetchedObjects as NSArray?
+        fetchedResultsArray = fetchedResultsController.fetchedObjects
         
         //現在地取得開始
         if CLLocationManager.locationServicesEnabled() {
@@ -67,11 +73,11 @@ class MasterViewController: UITableViewController {
             locationManager?.distanceFilter = 50
             locationManager?.startUpdatingLocation()
         }else {
-            appDelegate.lon = 135.779858
-            appDelegate.lat = 35.022487
+            userLocation = CLLocationCoordinate2D(latitude: 35.022487, longitude: 135.779858)
         }
         
         showIndicator()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,20 +133,21 @@ class MasterViewController: UITableViewController {
     
     fileprivate func configureCell(_ cell: TableViewCell, atIndexPath indexPath: IndexPath) {
         //Table View のセルを設定
-        let object = self.fetchedResultsArray!.object(at: (indexPath as NSIndexPath).row) as! RestaurantBasic
+        let object = self.fetchedResultsArray![(indexPath as NSIndexPath).row]
         cell.basicInformation = object
-        calculateTime((Double(object.longitude!)!, Double(object.latitude!)!), indexPath: indexPath)
+        if obtainedCurrentLocation{
+            if object.timeToTravel == nil {
+                self.calculateTime((Double(object.longitude!)!, Double(object.latitude!)!), indexPath : indexPath)
+            }else {
+            self.changeTimeLabel(object.timeToTravel!, indexPath: indexPath)
+            }
+        }
     }
     
     func changeTimeLabel(_ travelTimeInSeconds : String, indexPath : IndexPath) {
         if let label = (self.tableView.cellForRow(at: indexPath) as? TableViewCell)?.viewWithTag(2) as? UILabel {
             let travelTimeInMinutes = Double(travelTimeInSeconds)!/60
             let labelText = (Double(Int(travelTimeInMinutes*10))/10).description
-            if indexPath.row == 2{
-            //NSLog("Store Name: \((self.fetchedResultsArray![indexPath.row] as! RestaurantBasic).name)")
-            NSLog("Current Location is \(appDelegate.lat), \(appDelegate.lon)")
-            NSLog("Time is \(labelText)")
-            }
             label.text = labelText
             
             let labelBike = (self.tableView.cellForRow(at: indexPath) as? TableViewCell)?.viewWithTag(4) as? UILabel
@@ -148,8 +155,8 @@ class MasterViewController: UITableViewController {
             //NSLog("Time is \(labelBike!.text)")
         }
         
-        NSLog("current array count is \(tableDataSize)")
-        if countForIndicator == tableDataSize {
+        NSLog("current array count is \(countOfRequests)")
+        if countForIndicator == countOfRequests-1 {
             hideIndicator()
             countForIndicator = 0
             NSLog("Finish Indicator!")
@@ -157,6 +164,7 @@ class MasterViewController: UITableViewController {
             countForIndicator += 1
             NSLog("current countForIndicator is \(countForIndicator)")
         }
+        
     }
     
     var countForIndicator : Int = 0
@@ -206,8 +214,7 @@ extension MasterViewController : CLLocationManagerDelegate {
     @objc(locationManager:didUpdateLocations:)
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        appDelegate.lon = manager.location!.coordinate.longitude
-        appDelegate.lat = manager.location!.coordinate.latitude
+        userLocation = CLLocationCoordinate2D(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
         obtainedCurrentLocation = true
         
         self.tableView.reloadData()
@@ -215,9 +222,8 @@ extension MasterViewController : CLLocationManagerDelegate {
     
     //現在位置の読み込みに失敗した際に呼び出し
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        appDelegate.lon = 135.779858    // ここで位置情報決定
-        appDelegate.lat = 35.022487
-        NSLog("Error")
+        hideIndicator()
+        NSLog("Error to obtain user location")
         self.tableView.reloadData()
     }
     
@@ -241,12 +247,9 @@ extension MasterViewController : ResultViewController {
     
     //データの再読み込み
     func reloadFetchedData() {
-        fetchedResultsArray = fetchedResultsController.fetchedObjects as NSArray?
+        fetchedResultsArray = fetchedResultsController.fetchedObjects
         countForIndicator = 0
         self.tableView.reloadData()
-        NSLog(((self.tabBarController as? TabBarController)?.fetchLimit.description)!)
-        NSLog(fetchedResultsArray!.count.description)
-        NSLog(tableView.numberOfRows(inSection: 0).description)
     }
 }
 
@@ -258,7 +261,7 @@ extension MasterViewController : TableViewCellDelegate {
     func calculateTime(_ coordinate : (longitude : Double, latitude : Double), indexPath : IndexPath){
         
         if obtainedCurrentLocation {
-            let currentLocation = CLLocationCoordinate2DMake(appDelegate.lat, appDelegate.lon)
+            let currentLocation = CLLocationCoordinate2DMake(userLocation!.latitude, userLocation!.longitude)
             let destinationLocation = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude)
 
             let source : MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: currentLocation, addressDictionary: nil))
@@ -270,14 +273,14 @@ extension MasterViewController : TableViewCellDelegate {
             request.requestsAlternateRoutes = false
             request.transportType = MKDirectionsTransportType.walking
             
-            NSLog(request.description)
+            //NSLog(request.description)
             countOfRequests += 1
-            NSLog("count of requests is \(tableDataSize)")
+            NSLog("count of requests is \(countOfRequests)")
         
             var expectedTime : String? = ""
             let direction = MKDirections(request: request)
         
-            let queue = DispatchQueue(label: "myQueue")
+            let queue = DispatchQueue(label : "myQueue")
             queue.sync {
             
                 direction.calculateETA(completionHandler: {
@@ -286,9 +289,11 @@ extension MasterViewController : TableViewCellDelegate {
                     if error == nil {
                         expectedTime = response?.expectedTravelTime.description
                         NSLog(expectedTime!)
+                        self.fetchedResultsArray?[indexPath.row].timeToTravel = expectedTime
                         self.changeTimeLabel(expectedTime!, indexPath: indexPath)
                     
                     }else {
+                        NSLog(request.description)
                         NSLog((error?.localizedDescription)!)
                     }
                 })

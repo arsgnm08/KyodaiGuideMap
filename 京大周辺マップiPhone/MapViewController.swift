@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class MapViewController: UIViewController/*, CLLocationManagerDelegate, MKMapViewDelegate*/ {
+class MapViewController: UIViewController {
 
     @IBOutlet var mapView : MKMapView!
     var fetchedResultsController : NSFetchedResultsController<RestaurantBasic> {
@@ -22,7 +22,10 @@ class MapViewController: UIViewController/*, CLLocationManagerDelegate, MKMapVie
     let viewController : PopoverCriteriaViewController = PopoverCriteriaViewController(nibName: "PopoverCriteriaViewController", bundle: nil)
     var searchBar: UISearchBar = UISearchBar()
     var criteria : Criteria! = nil
-    var appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+    
+    //mapの初期中心座標
+    var userLocation : CLLocationCoordinate2D? = nil
+    
 /*    var myLocationManager = CLLocationManager()//ロケーションマネージャー生成
     var latitude: CLLocationDegrees!
     var longitude: CLLocationDegrees!
@@ -33,7 +36,11 @@ class MapViewController: UIViewController/*, CLLocationManagerDelegate, MKMapVie
         let tabBarController = self.tabBarController as? TabBarController
         tabBarController?.changedCriteria = true
         
-        let currentLocation = CLLocation(latitude: appDelegate.lat, longitude: appDelegate.lon)
+        var currentLocation = CLLocation(latitude: 35.022487, longitude: 135.779858)
+        if let centerCoordinate = userLocation {
+            currentLocation = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
+        }
+        
         let coordinateRegion = MKCoordinateRegion(center: currentLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         self.mapView!.region = coordinateRegion
         self.mapView!.delegate = self //現在地をマップ中心に

@@ -14,4 +14,6 @@ class RestaurantBasic: NSManagedObject {
     
 // Insert code here to add functionality to your managed object subclass
 
+    var timeToTravel : String? = nil
+    
 }

@@ -8,39 +8,57 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class TabBarController: UITabBarController {
     
+    //MARK: プロパティ定義
+    //coredata関連
     var managedObjectContext : NSManagedObjectContext? = nil
     fileprivate var fetchRequest : NSFetchRequest<RestaurantBasic>? = nil
-    
     //Delegateで値を返す
     var _fetchedResultsController: NSFetchedResultsController<RestaurantBasic>? = nil
-    
     //検索の絞り込み条件
     var criteria : Criteria = Criteria.getInstance()
     var changedCriteria = false
     var fetchLimit = 10
+    //現在地
+    struct location {
+        var latitude : Double
+        var longitude : Double
+    }
+    var userLocation : CLLocationCoordinate2D? = nil {
+        didSet {
+            let mapViewController = self.viewControllers?[1] as? MapViewController
+            mapViewController?.userLocation = userLocation
+        }
+    }
+    
     
     //MARK: Internal functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //CoreDataにおける致命的なエラーを判定
+        if managedObjectContext == nil {
+            fatalError("データ読み込みに失敗")
+        }
+        
+        //初回起動時に初期データをセット
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "firstLaunch") {
             setMasterData()
             defaults.set(false, forKey:"firstLaunch")
         }
         
+        //孫ビューコントローラの定義
         let tableViewController = viewControllers?[0].childViewControllers.first as! MasterViewController
         tableViewController.criteria = Criteria.getInstance()
         let mapViewController = viewControllers?[1].childViewControllers.first as! MapViewController
         mapViewController.criteria = Criteria.getInstance()
         
-        if managedObjectContext == nil {
-            fatalError("データ読み込みに失敗")
-        }
-        
+        //ホームボタンの定義
         setupCenterButton()
     }
     
@@ -48,9 +66,12 @@ class TabBarController: UITabBarController {
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: private functions
+    
+    //MARK: Private functions
     
     //MARK: Center Button ( Home Button ) に関するメソッド
+    
+    //ボタンの定義および表示
     fileprivate func setupCenterButton() {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor.black
@@ -60,6 +81,7 @@ class TabBarController: UITabBarController {
         tabBar.addSubview(button)
     }
     
+    //ホームボタンがタップされた際の処理
     @objc fileprivate func centerButtonTapped(){
         clearCriteria()
         self.selectedIndex = 0

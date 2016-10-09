@@ -24,5 +24,10 @@ protocol ModalViewControllerDelegate {
 }
 
 protocol TableViewCellDelegate {
-    func calculateTime(_ coordinate : (longitude : Double, latitude : Double), indexPath: IndexPath)
+    func calculateTime(_ coordinate : (longitude : Double, latitude : Double), indexPath : IndexPath)
+}
+
+struct location {
+    var latitude : Double
+    var longitude : Double
 }

@@ -150,8 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				E16B6D9E1D71DAFC005A80A4 /* ManagedObjects */,
-				E1D4FCC71D6B47C300C32EEE /* TabBarController.swift */,
 				E1AE1A961DA93256009F5F3C /* Photo.bundle */,
+				E1D4FCC71D6B47C300C32EEE /* TabBarController.swift */,
 				E164EDBC1D93CFB900658CC9 /* Protocols.swift */,
 				E164EDBA1D93B2F000658CC9 /* FilteringNavigationController.swift */,
 				E1FDD8BF1D4F5A0E009C370A /* AppDelegate.swift */,
