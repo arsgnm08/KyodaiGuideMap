@@ -8,18 +8,26 @@
 
 import UIKit
 
+
 class FilteringNavigationController: UINavigationController {
 
+    //--------------------------
+    //MARK: Internal functions
+    //--------------------------
+    
+    //NavigationControllerを読み込み終わったらナビゲーションバーのボタンを配置
     override func viewDidLoad() {
         super.viewDidLoad()
         addButtons()
     }
     
+    //ナビゲーションバーにボタンを配置
     fileprivate func addButtons() {
         setupSearchBar()
         self.viewControllers.first!.navigationItem.leftBarButtonItem = UIBarButtonItem(title:"フィルタ", style:UIBarButtonItemStyle.plain, target: self, action: #selector(FilteringNavigationController.setupCriteria))
     }
     
+    //検索バーを設定
     fileprivate func setupSearchBar() {
         let navigationBarFrame = self.navigationBar.bounds
         let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
@@ -35,10 +43,12 @@ class FilteringNavigationController: UINavigationController {
         //searchBar.becomeFirstResponder()
     }
     
-    //MARK: configure bar buttons
+    //-----------------------------
+    //MARK: ナビゲーションバーのボタン
+    //-----------------------------
     
+    //フィルタのウィンドウを設定
     @objc fileprivate func setupCriteria() {
-        //configure popover view
         
         let presentingViewController = self.topViewController as! ResultViewController
         let viewController = presentingViewController.viewController
@@ -54,6 +64,7 @@ class FilteringNavigationController: UINavigationController {
         present(presentingViewController.viewController, animated: true, completion: nil)
     }
     
+    //キーボードを隠す
     @objc fileprivate func dismissKeyboard() {
         //self.view.endEditing(true)
         let viewController = self.topViewController as! ResultViewController
@@ -120,6 +131,7 @@ extension FilteringNavigationController : UISearchBarDelegate {
 
 extension FilteringNavigationController : ModalViewControllerDelegate {
     
+    //フィルタのウィンドウを隠す際の処理
     func modalDidFinished() {
         let presentingViewController = self.viewControllers.first as! ResultViewController
         let viewController = presentingViewController.viewController
@@ -131,6 +143,7 @@ extension FilteringNavigationController : ModalViewControllerDelegate {
         }
     }
     
+    //リセットボタンをタップした際の動作
     func modalResetTapped() {
         let presentingViewController = self.viewControllers.first as! ResultViewController
         let tabBarController = self.tabBarController as! TabBarController
@@ -144,6 +157,7 @@ extension FilteringNavigationController : ModalViewControllerDelegate {
 
 extension FilteringNavigationController : UIPopoverPresentationControllerDelegate{
     
+    //フィルタのウィンドウをにゅっと出す
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }

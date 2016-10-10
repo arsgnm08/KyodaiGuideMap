@@ -12,7 +12,9 @@ import CoreLocation
 
 class TabBarController: UITabBarController {
     
-    //MARK: プロパティ定義
+    //----------------------------
+    //MARK: インスタンスプロパティ定義
+    //----------------------------
     //coredata関連
     var managedObjectContext : NSManagedObjectContext? = nil
     fileprivate var fetchRequest : NSFetchRequest<RestaurantBasic>? = nil
@@ -22,11 +24,8 @@ class TabBarController: UITabBarController {
     var criteria : Criteria = Criteria.getInstance()
     var changedCriteria = false
     var fetchLimit = 10
-    //現在地
-    struct location {
-        var latitude : Double
-        var longitude : Double
-    }
+
+    //MasterViewControllerで取得した現在地をMapViewControllerに引き渡す
     var userLocation : CLLocationCoordinate2D? = nil {
         didSet {
             let mapViewController = self.viewControllers?[1] as? MapViewController
@@ -34,9 +33,10 @@ class TabBarController: UITabBarController {
         }
     }
     
-    
+    //--------------------------
     //MARK: Internal functions
-    
+    //--------------------------
+    //画面読み込み
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,10 +66,13 @@ class TabBarController: UITabBarController {
         super.didReceiveMemoryWarning()
     }
     
-    
+    //-------------------------
     //MARK: Private functions
+    //-------------------------
     
+    //---------------------------------------------------
     //MARK: Center Button ( Home Button ) に関するメソッド
+    //---------------------------------------------------
     
     //ボタンの定義および表示
     fileprivate func setupCenterButton() {
@@ -91,7 +94,11 @@ class TabBarController: UITabBarController {
         (navigationController.topViewController as? MasterViewController)?.reloadFetchedData()
     }
     
+    //-----------------------------------
     //MARK: Fetch Request に関するメソッド
+    //-----------------------------------
+    
+    //フェッチリクエストを準備
     fileprivate func prepareFetchRequest(_ manegedObjectcontext:NSManagedObjectContext) -> NSFetchRequest<RestaurantBasic>? {
         //Entity, 検索結果の件数, ソート に関して設定を行う
         let entity : NSEntityDescription? = NSEntityDescription.entity(forEntityName: "RestaurantBasic", in: managedObjectContext!)
@@ -107,11 +114,13 @@ class TabBarController: UITabBarController {
         return fetchRequest
     }
     
+    //フェッチリクエストの設定
     fileprivate func configureFetchRequest() {
         //キーワードからPredicateを作成
         var predicateWithKeyWord : NSPredicate? = nil
         let keyWord : NSString = criteria.keyWord as NSString
         
+        //キーワードの文字列をスペースで区切って分割
         if keyWord.length > 0 {
             let keyWordsArray = keyWord.components(separatedBy: " ")
             
@@ -189,8 +198,12 @@ class TabBarController: UITabBarController {
         
     }
     
+    //-------------------------------
     //MARK: データ初期化に関するメソッド
+    //-------------------------------
     
+    
+    //マスターデータをCoreDataに導入
     fileprivate func setMasterData() {
         
         let path:NSString = Bundle.main.path(forResource: "MasterData", ofType: "plist")! as NSString
@@ -268,27 +281,24 @@ class TabBarController: UITabBarController {
             }
         }
     }
-    
-    
+
+    //-------------------------------
     //MARK: 検索条件を初期化するメソッド
+    //-------------------------------
     
+    //検索条件をリセットするメソッド
     func clearCriteria(){
         criteria.initializeCriteria()
     }
 }
 
+//-----------------------------------
 //MARK: setFavoriteDelegateのメソッド
-
-/*
-Custum Protocol
-
-protocol SetFavoriteDelegate{
-    func setFavorite(number: String, value: NSNumber)
-}
-*/
+//-----------------------------------
 
 extension TabBarController : SetFavoriteDelegate{
     
+    //店舗をお気に入りに追加
     func setFavorite(_ number: String, value: NSNumber){
         
         //お気に入りの店として設定
@@ -325,10 +335,13 @@ extension TabBarController : SetFavoriteDelegate{
 
 }
 
+//--------------------------------------------------
 //MARK: NSFetchedResultsControllerDelegateのメソッド
+//--------------------------------------------------
 
 extension TabBarController : NSFetchedResultsControllerDelegate {
     
+    //詳細は上回生にきいてね☆
     var fetchedResultsController: NSFetchedResultsController<RestaurantBasic> {
         
         if (_fetchedResultsController != nil) && (changedCriteria == false) {
