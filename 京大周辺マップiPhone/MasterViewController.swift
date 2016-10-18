@@ -50,9 +50,12 @@ class MasterViewController: UITableViewController {
         }
     }
     
+    
+    //所要時間計算の終了を判断
+    var countForIndicator : Int = 0
+    
     //For Debug
     var countOfRequests = 0
-    
     //--------------------------
     //MARK: Internal Functions
     //--------------------------
@@ -332,9 +335,7 @@ extension MasterViewController : TableViewCellDelegate {
         }
         
     }
-    
-    //所要時間計算の終了を判断
-    var countForIndicator : Int = 0
+
 }
 
 

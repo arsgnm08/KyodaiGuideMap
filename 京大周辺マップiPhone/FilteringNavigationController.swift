@@ -24,8 +24,27 @@ class FilteringNavigationController: UINavigationController {
     //ナビゲーションバーにボタンを配置
     fileprivate func addButtons() {
         setupSearchBar()
-        self.viewControllers.first!.navigationItem.leftBarButtonItem = UIBarButtonItem(title:"フィルタ", style:UIBarButtonItemStyle.plain, target: self, action: #selector(FilteringNavigationController.setupCriteria))
+        let filterImage = resizeImage(image: #imageLiteral(resourceName: "filter_03"))
+        
+        self.viewControllers.first!.navigationItem.leftBarButtonItem = UIBarButtonItem(image: filterImage?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItemStyle.plain, target: self, action: #selector(FilteringNavigationController.setupCriteria))
     }
+    
+    fileprivate func resizeImage(image : UIImage) -> UIImage? {
+        let imageHeight = self.navigationBar.bounds.size.height - 20
+        let imageWidth = image.size.width * (imageHeight/image.size.height)
+        let resizedSize = CGSize(width: imageWidth, height:imageHeight)
+        UIGraphicsBeginImageContext(resizedSize)
+        
+        NSLog(image.size.debugDescription)
+        
+        image.draw(in: CGRect(x: 0, y: 0, width: resizedSize.width, height: resizedSize.height))
+        //FilterImageView.draw(CGRect(x: 0, y: 0, width: resizedSize.width, height: resizedSize.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resizedImage
+    }
+
     
     //検索バーを設定
     fileprivate func setupSearchBar() {

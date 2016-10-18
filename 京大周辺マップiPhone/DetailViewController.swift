@@ -27,30 +27,26 @@ class DetailViewController: UIViewController {
         self.topTitle()
         self.Photo()
         self.configureInformationLabels()
-        
-        //self.businessHours()
-        //self.closeDay()
-        //self.budget()
-        //self.telephoneNUmber()
-        //self.reserve()
-        //self.bycicle()
-        //self.seats()
         self.explanation()
         self.menu()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addButtons()
     }
-    //お気に入りボタンの追加
+    //お気に入りボタン、マップボタンのの追加
     func addButtons(){
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "☆", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DetailViewController.setFavorite))
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "☆", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DetailViewController.setFavorite)), UIBarButtonItem(title: "Map", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DetailViewController.setMap))]
         if (restaurantBasicInfo!.favorite)!.boolValue {
             self.navigationItem.rightBarButtonItem!.title = "★"
         }
     }
-    //お気に入り機能について
+    //お気に入りについて
     func setFavorite(){
         let tabBarController = self.tabBarController as? TabBarController
         tabBarController?.setFavorite((restaurantBasicInfo?.number)!, value: (restaurantBasicInfo?.favorite)!)
@@ -62,12 +58,39 @@ class DetailViewController: UIViewController {
         }
     }
     
+    //詳細地図について
+    func setMap() {
+        let modalViewController = DetailMapViewController()
+        modalViewController.restaurantBasicInfo = self.restaurantBasicInfo
+        modalViewController.previousViewController = self
+     //   self.navigationController?.pushViewController(modalViewController, animated: true)
+        modalViewController.modalPresentationStyle = .custom
+        //modalViewController.transitioningDelegate = self
+        present(modalViewController, animated: true, completion: nil)
+    }
+    
+    //データ受け渡し　追記
+    /* func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "segue") {
+            // SecondViewControllerクラスをインスタンス化してsegue（画面遷移）で値を渡せるようにバンドルする
+            var DetailMapView : DetailMapViewController = segue.destination as! DetailMapViewController
+            // secondView（バンドルされた変数）に受け取り用の変数を引数とし_paramを渡す（_paramには渡したい値）
+            // この時SecondViewControllerにて受け取る同型の変数を用意しておかないとエラーになる
+            DetailMapView.restaurantBasicInfo = restaurantBasicInfo
+        }
+    }*/
+    @objc fileprivate func setuprestaurantData() {
+        
+        }
+    
+    //ナビゲーションバーのタイトルについて
     func topTitle() {
         self.navigationItem.title = restaurantBasicInfo!.name
     }
     
     let theView = UIImageView()
     
+    //写真について
     func Photo() {
         theView.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.size.height)!, width: UIScreen.main.bounds.size.width, height: (3 * UIScreen.main.bounds.size.width) / 4)
         theView.backgroundColor = UIColor.black
@@ -137,13 +160,13 @@ class DetailViewController: UIViewController {
         labels[6].text = restaurantBasicInfo?.seats
         
        //アイコンの画像
-       /* views[0].image = UIImage (name: "")
-        views[1].image = UIImage (name: "")
-        views[2].image = UIImage (name: "")
-        views[3].image = UIImage (name: "")
-        views[4].image = UIImage (name: "")
-        views[5].image = UIImage (name: "")
-        views[6].image = UIImage (name: "")*/
+        views[0].image = UIImage (named: "営業時間")
+        views[1].image = UIImage (named: "定休日")
+        views[2].image = UIImage (named: "予算")
+        views[3].image = UIImage (named: "電話")
+        views[4].image = UIImage (named: "予約")
+        views[5].image = UIImage (named: "駐輪場")
+        views[6].image = UIImage (named: "座席数")
     }
     
    //説明に関して
@@ -207,14 +230,12 @@ class DetailViewController: UIViewController {
             }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+/*
+extension DetailViewController: UIViewControllerTransitioningDelegate {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return DetailMapCustomPresentationController(presentedViewController: presented, presenting: presenting)
     }
-    
-    
 }
+*/
 
-extension DetailViewController {
-    
-}
